@@ -12,4 +12,10 @@ public class ShopPage {
     public void checkTitle() {
         $$(".menu-item").first().shouldHave(text(TITLE));
     }
+
+    public void addItem() {
+//        $$(".outer_link_product").first().click();
+        $(".product-card-add").click();
+    }
+
 }

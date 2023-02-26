@@ -9,6 +9,7 @@ import tests.TestBase;
 import tests.pages.MainPage;
 import tests.pages.SearchPage;
 import tests.pages.ShopPage;
+import tests.pages.SmartKitchenPage;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -20,6 +21,7 @@ import static tests.pages.MainPage.*;
 public class PressButtonsOnMainPageTest extends TestBase {
     MainPage mainPage = new MainPage();
     SearchPage searchPage = new SearchPage();
+    SmartKitchenPage smartKitchenPage = new SmartKitchenPage();
 
     @Test
     @DisplayName("Test button search clickable")
@@ -51,9 +53,14 @@ public class PressButtonsOnMainPageTest extends TestBase {
     @DisplayName("Scroll down and check license")
     public void scrollingDownCheckLicense() {
 
-        step("Открыть страницу", () -> mainPage.openPage());
-        step("Прокрутить до конца страницы", () -> $("footer").scrollTo()); // TODO: 20.02.2023 разобраться со скроллом
-        step("Проверить наличие записи о защите прав", () -> $(withText(LICENSE)).shouldHave(Condition.exist));
+        step("Открыть страницу", ()
+                -> mainPage.openPage());
+
+        step("Прокрутить до конца страницы", ()
+                -> endOfPage.scrollTo());
+
+        step("Проверить наличие записи о защите прав", () ->
+                $(withText(TEXT_SUBSCRIBE)).shouldHave(Condition.exist));
     }
 
     @Test
@@ -73,6 +80,7 @@ public class PressButtonsOnMainPageTest extends TestBase {
         step("нажать на лого", SearchPage::clickOnHeaderLogo);
 
     }
+
     @Test
     @DisplayName("Test button search clickable")
     public void clickButtonShop() {
@@ -80,23 +88,22 @@ public class PressButtonsOnMainPageTest extends TestBase {
 
         step("Открыть страницу", () -> mainPage.openPage());
 
-        step("Кликнуть на кнопку поиска в шапке", MainPage::clickOnHeaderShop);
+        step("Кликнуть на кнопку интернет-магазин", MainPage::clickOnHeaderShop);
 
-        step("Проверить появление строки поиска", () -> shopPage.checkTitle());
+        step("Проверить переход на страницу магазина", shopPage::checkTitle);
     }
 
     @Test
-    @DisplayName("Test button search clickable")
-    public void takeItemInBasket() {
-        ShopPage shopPage = new ShopPage();
+    @DisplayName("Test click on middle section")
+    public void clickOnMiddleSection() {
 
         step("Открыть страницу", () -> mainPage.openPage());
 
-        step("Кликнуть на кнопку поиска в шапке", MainPage::clickOnHeaderShop);
-
-        step("Проверить появление строки поиска", () -> shopPage.checkTitle());
-
-
+        step("Скролл до средней панели и нажать на ссылку", () -> {
+            middleSection.scrollTo();
+            $(".main-page-menu-list-item").click();
+            smartKitchenPage.verifyResult();
+        });
     }
 
 }
