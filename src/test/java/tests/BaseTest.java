@@ -10,7 +10,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import tests.config.WebDriverProvider;
 import tests.helpers.Attach;
 
-public class TestBase {
+public class BaseTest {
     @BeforeAll
     static void configure() {
         WebDriverProvider.configuration();

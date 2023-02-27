@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import tests.TestBase;
+import tests.BaseTest;
 import tests.pages.MainPage;
 import tests.pages.SearchPage;
 import tests.pages.ShopPage;
@@ -22,12 +22,12 @@ import static tests.pages.MainPage.*;
 
 @Epic("Diploma project")
 @Story("Testing web redmond")
-public class PressButtonsOnMainPageTest extends TestBase {
+public class PressButtonsOnMainPageTest extends BaseTest {
     MainPage mainPage = new MainPage();
     SearchPage searchPage = new SearchPage();
     SmartKitchenPage smartKitchenPage = new SmartKitchenPage();
 
-    private String TEXT_FOR_SEARCH = "мультиварка";
+    private final String TEXT_FOR_SEARCH = "мультиварка";
 
     @Test
     @DisplayName("Test button search clickable")
