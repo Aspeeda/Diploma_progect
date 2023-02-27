@@ -1,4 +1,5 @@
 # Дипломный проект по тестированию сайта Redmond [Redmond](https://redmond.company/)
+a href="https://redmond.company//"><img src="media/logo/main-logo.svg" alt="REDMOND" title="REDMOND"/></a>
 
 ## :open_book: Содержание:
 
@@ -14,7 +15,7 @@
 
 ## :gear: Технологии и инструменты
 
-<p align="left">
+<p align="center">
 <a href="https://www.jetbrains.com/idea/"><img src="media\logo\IDEA-logo.svg" width="50" height="50"  alt="IDEA" title="IntelliJ IDEA"/></a>
 <a href="https://www.java.com/"><img src="media/logo/Java.svg" width="50" height="50" alt="Java" title="Java"/></a>
 <a href="https://github.com/"><img src="media/logo/git-logo.svg" width="50" height="50" alt="Github" title="GitHub"/></a>
@@ -28,8 +29,9 @@
 <a href="https://qameta.io/"><img src="media/logo/Allure_TO.svg" width="50" height="50" alt="Allure_TO" title="Allure_TO"></a>
 </p>
 
+<p align="center" ><b>Основной стек технологий</b></p><br>
 Проект разработан на языке програмирования **Java** с использованием фреймворка для тестирования **Selenide**. <br><br>
-Сборка и менеджмент проекта в среде **IntelliJ IDEA** используется **Gradle**, **JUnit5**. <br><br>
+Сборка и менеджмент проекта в среде **IntelliJ IDEA**: **Gradle**, **JUnit5**. <br><br>
 Запуск тестов выполняется из **Jenkins**. <br>
 **Selenoid** используется для запуска браузеров в контейнерах **Docker**.
 
