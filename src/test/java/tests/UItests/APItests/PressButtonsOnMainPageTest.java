@@ -31,37 +31,42 @@ public class PressButtonsOnMainPageTest extends TestBase {
     @DisplayName("Test button search clickable")
     public void clickButtonSearch() {
 
-        step("Открыть страницу", () -> mainPage.openPage());
+        step("Открыть страницу", () ->
+                mainPage.openPage());
 
-        step("Кликнуть на кнопку поиска в шапке", MainPage::clickOnHeaderSearch);
+        step("Кликнуть на кнопку поиска в шапке", () ->
+                mainPage.clickOnHeaderSearch());
 
-        step("Проверить появление строки поиска", () -> inputSearch.shouldHave(Condition.exist));
+        step("Проверить появление строки поиска", () ->
+                mainPage.inputSearch.shouldHave(Condition.exist));
     }
 
     @Test
     @DisplayName("Test enter text in search input")
     public void searchInputFilling() {
 
-        step("Открыть страницу", () -> mainPage.openPage());
+        step("Открыть страницу", () ->
+                mainPage.openPage());
 
         step("Кликнуть на кнопку поиска в шапке и заполнить поле, нажать Enter", () -> {
-            clickOnHeaderSearch();
-            setText("мультиварка");
-            inputSearch.pressEnter();
+            mainPage.clickOnHeaderSearch();
+            mainPage.setText("мультиварка");
+            mainPage.inputSearch.pressEnter();
         });
 
-        step("Проверить переход на страницу результатов поиска", () -> searchPage.verifyResult());
+        step("Проверить переход на страницу результатов поиска", () ->
+                searchPage.verifyResult());
     }
 
     @Test
     @DisplayName("Scroll down and check license")
     public void scrollingDownCheckLicense() {
 
-        step("Открыть страницу", ()
-                -> mainPage.openPage());
+        step("Открыть страницу", () ->
+                mainPage.openPage());
 
-        step("Прокрутить до конца страницы", ()
-                -> endOfPage.scrollTo());
+        step("Прокрутить до конца страницы", () ->
+                mainPage.endOfPage.scrollTo());
 
         step("Проверить наличие записи о защите прав", () ->
                 $(withText(TEXT_SUBSCRIBE)).shouldHave(Condition.exist));
@@ -74,12 +79,14 @@ public class PressButtonsOnMainPageTest extends TestBase {
         step("Открыть страницу", () -> mainPage.openPage());
 
         step("Кликнуть на кнопку поиска в шапке и заполнить поле, нажать Enter", () -> {
-            clickOnHeaderSearch();
-            setText("мультиварка");
-            inputSearch.pressEnter();
+            mainPage.clickOnHeaderSearch();
+            mainPage.setText("мультиварка");
+            mainPage.inputSearch.pressEnter();
         });
 
-        step("Проверить переход на страницу результатов поиска", () -> searchPage.verifyResult());
+        step("Проверить переход на страницу результатов поиска", () -> {
+            searchPage.verifyResult();
+        });
 
         step("нажать на лого", SearchPage::clickOnHeaderLogo);
 
@@ -90,7 +97,8 @@ public class PressButtonsOnMainPageTest extends TestBase {
     public void clickButtonShop() {
         ShopPage shopPage = new ShopPage();
 
-        step("Открыть страницу", () -> mainPage.openPage());
+        step("Открыть страницу", ()
+                -> mainPage.openPage());
 
         step("Кликнуть на кнопку интернет-магазин", MainPage::clickOnHeaderShop);
 
@@ -104,8 +112,11 @@ public class PressButtonsOnMainPageTest extends TestBase {
         step("Открыть страницу", () -> mainPage.openPage());
 
         step("Скролл до средней панели и нажать на ссылку", () -> {
-            middleSection.scrollTo();
+            mainPage.middleSection.scrollTo();
             $(LIST_ITEM).click();
+        });
+
+        step("Проверить переход на страницу", () -> {
             smartKitchenPage.verifyResult();
         });
     }
@@ -117,12 +128,11 @@ public class PressButtonsOnMainPageTest extends TestBase {
 
         step("Открыть страницу", () -> mainPage.openPage());
 
-        step("Скролл до средней панели и нажать на ссылку", () -> {
-            step("Прокрутить до конца страницы", () ->
-                    $("footer").scrollTo());
-            step("Проверить наличие записи о защите прав", () ->
-                    $(withText(LICENSE)).shouldHave(Condition.exist));
-        });
+        step("Прокрутить до конца страницы", () ->
+                $("footer").scrollTo());
+
+        step("Проверить наличие записи о защите прав", () ->
+                $(withText(LICENSE)).shouldHave(Condition.exist));
     }
 
     @ValueSource(strings = {"Умная кухня", "Умный дом", "Роботы-пылесосы", "Мультиварки",
@@ -134,11 +144,12 @@ public class PressButtonsOnMainPageTest extends TestBase {
         step("Открыть страницу", () -> mainPage.openPage());
 
         step("Скролл до средней панели и нажать на ссылку", () -> {
-            middleSection.scrollIntoView(false);
-
-            step("Проверить видимость элементов в средней секции", () -> {
-                $x("//div[contains(text(), '" + tabName + "')]").shouldBe(Condition.visible);
-            });
+            mainPage.middleSection.scrollIntoView(false);
         });
+
+        step("Проверить видимость элементов в средней секции", () -> {
+            $x("//div[contains(text(), '" + tabName + "')]").shouldBe(Condition.visible);
+        });
+
     }
 }

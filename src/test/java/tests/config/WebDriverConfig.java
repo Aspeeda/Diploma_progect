@@ -13,6 +13,10 @@ public interface WebDriverConfig extends Config {
     @DefaultValue("CHROME")
     Browser getBrowser();
 
+    @Key("browserVersion")
+    @DefaultValue("100.0")
+    String getBrowserVersion();
+
     @Key("browserSize")
     String getBrowserSize();
 

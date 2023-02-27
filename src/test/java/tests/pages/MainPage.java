@@ -7,11 +7,11 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
-    private static final SelenideElement search = $(".header-search-link");
-    public static SelenideElement inputSearch = $(".digi-search-form__input");
+    private final SelenideElement search = $(".header-search-link");
+    public final SelenideElement inputSearch = $(".digi-search-form__input");
     private final SelenideElement title = $(".main-page-home-slider-content-title-big");
-    public static SelenideElement middleSection = $x("//div[contains(text(), 'Умная кухня')]"); // TODO: 26.02.2023 params
-    public static SelenideElement endOfPage = $x("//a[contains(text(), 'Мы в соцсетях')]");
+    public final SelenideElement middleSection = $x("//div[contains(text(), 'Умная кухня')]"); // TODO: 26.02.2023 params
+    public final SelenideElement endOfPage = $x("//a[contains(text(), 'Мы в соцсетях')]");
 
     public static String TEXT_SUBSCRIBE = "Подпишись на наши соцсети, участвуй в розыгрышах, следи за новостями и " +
             "получай промокоды на скидки в наших интернет-магазинах.";
@@ -30,7 +30,7 @@ public class MainPage {
     }
 
     @Step("Click on header search")
-    public static void clickOnHeaderSearch() {
+    public void clickOnHeaderSearch() {
         search.click();
     }
 
@@ -40,7 +40,7 @@ public class MainPage {
     }
 
     @Step("Fill input")
-    public static void setText(String text) {
+    public void setText(String text) {
         inputSearch.setValue(text);
     }
 }
