@@ -10,7 +10,7 @@ import org.aeonbits.owner.Config;
 public interface WebDriverConfig extends Config {
 
     @Key("baseUrl")
-    @DefaultValue("https://redmond.company/")
+    @DefaultValue("https://redmond.company")
     String getBaseUrl();
 
     @Key("browser")
@@ -26,5 +26,6 @@ public interface WebDriverConfig extends Config {
 
     @Key("remoteUrl")
     String getRemoteURL();
-
+    @Key("isRemote")
+    boolean isRemote();
 }

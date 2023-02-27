@@ -18,5 +18,8 @@ public class WebDriverProvider {
         if (remoteUrl != null) {
             Configuration.remote = remoteUrl;
         }
+//        if (config.isRemote()) {
+//            Configuration.remote = config.getRemoteURL();
+//        }
     }
 }
