@@ -10,15 +10,15 @@ public class MainPage {
     private static final SelenideElement search = $(".header-search-link");
     public static SelenideElement inputSearch = $(".digi-search-form__input");
     private final SelenideElement title = $(".main-page-home-slider-content-title-big");
-    public static SelenideElement middleSection =  $x("//div[contains(text(), 'Умная кухня')]"); // TODO: 26.02.2023 params
-    public static SelenideElement endOfPage =  $x("//a[contains(text(), 'Мы в соцсетях')]");
+    public static SelenideElement middleSection = $x("//div[contains(text(), 'Умная кухня')]"); // TODO: 26.02.2023 params
+    public static SelenideElement endOfPage = $x("//a[contains(text(), 'Мы в соцсетях')]");
+
     public static String TEXT_SUBSCRIBE = "Подпишись на наши соцсети, участвуй в розыгрышах, следи за новостями и " +
             "получай промокоды на скидки в наших интернет-магазинах.";
-    private static String TITLE = "На страже чистоты!";
-
-
-    public static String COPYRIGHT = ".text-white copyright";
+    public static String LICENSE = "© 2022 REDMOND™";
+    private static final String TITLE = "На страже чистоты!";
     public static String SHOP = ".menu-item";
+    public static String LIST_ITEM = ".main-page-menu-list-item";
 
     public MainPage openPage() {
         open("https://redmond.company/");
@@ -41,6 +41,6 @@ public class MainPage {
 
     @Step("Fill input")
     public static void setText(String text) {
-       inputSearch.setValue(text);
+        inputSearch.setValue(text);
     }
 }

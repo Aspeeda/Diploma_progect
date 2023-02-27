@@ -8,8 +8,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SearchPage {
 
-    private static String TITLE = "Найдено в категориях";
-    private SelenideElement title = $(".digi-title");
+    private static final String TITLE = "Найдено в категориях";
+    private final SelenideElement title = $(".digi-title");
     private static final SelenideElement logo = $(".header-logo");
 
 

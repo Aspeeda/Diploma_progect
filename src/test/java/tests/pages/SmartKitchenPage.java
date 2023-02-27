@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SmartKitchenPage {
     private static String TITLE = "Умная кухня";
-    private SelenideElement title = $("title");
+    private SelenideElement title = $(".catalog-page-title");
 
     @Step("Проверить, что выведенные значения совпадают с введенными")
     public void verifyResult() {

@@ -2,9 +2,13 @@ package tests.UItests.APItests;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Epic;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import tests.TestBase;
 import tests.pages.MainPage;
 import tests.pages.SearchPage;
@@ -101,9 +105,40 @@ public class PressButtonsOnMainPageTest extends TestBase {
 
         step("Скролл до средней панели и нажать на ссылку", () -> {
             middleSection.scrollTo();
-            $(".main-page-menu-list-item").click();
+            $(LIST_ITEM).click();
             smartKitchenPage.verifyResult();
         });
     }
 
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Test check footer is visible")
+    public void checkFooterVisibility() {
+
+        step("Открыть страницу", () -> mainPage.openPage());
+
+        step("Скролл до средней панели и нажать на ссылку", () -> {
+            step("Прокрутить до конца страницы", () ->
+                    $("footer").scrollTo());
+            step("Проверить наличие записи о защите прав", () ->
+                    $(withText(LICENSE)).shouldHave(Condition.exist));
+        });
+    }
+
+    @ValueSource(strings = {"Умная кухня", "Умный дом", "Роботы-пылесосы", "Мультиварки",
+            "Мультикухни", "Мультипекари", "Грили", "Экотовары"})
+    @ParameterizedTest(name = "\"{0}\"")
+    @DisplayName("Test click on middle section")
+    public void checkMiddleSectionTabs(String tabName) {
+
+        step("Открыть страницу", () -> mainPage.openPage());
+
+        step("Скролл до средней панели и нажать на ссылку", () -> {
+            middleSection.scrollIntoView(false);
+
+            step("Проверить видимость элементов в средней секции", () -> {
+                $x("//div[contains(text(), '" + tabName + "')]").shouldBe(Condition.visible);
+            });
+        });
+    }
 }
