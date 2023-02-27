@@ -17,7 +17,8 @@ public class TestBase {
         Configuration.baseUrl = "https://redmond.company/";
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 10000;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = System.getProperty("remoteUrl","https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        Configuration.browserVersion=System.getProperty("browserVers","100.0");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
