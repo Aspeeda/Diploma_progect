@@ -1,4 +1,4 @@
-package tests.UItests.APItests;
+package tests.UItests;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Epic;
@@ -26,6 +26,7 @@ public class PressButtonsOnMainPageTest extends BaseTest {
     MainPage mainPage = new MainPage();
     SearchPage searchPage = new SearchPage();
     SmartKitchenPage smartKitchenPage = new SmartKitchenPage();
+    ShopPage shopPage = new ShopPage();
 
     private final String TEXT_FOR_SEARCH = "мультиварка";
 
@@ -61,7 +62,7 @@ public class PressButtonsOnMainPageTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Scroll down and check license")
+    @DisplayName("Scroll down and check subscribing")
     public void scrollingDownCheckLicense() {
 
         step("Открыть страницу", () ->
@@ -70,7 +71,7 @@ public class PressButtonsOnMainPageTest extends BaseTest {
         step("Прокрутить до конца страницы", () ->
                 mainPage.endOfPage.scrollTo());
 
-        step("Проверить наличие записи о защите прав", () ->
+        step("Проверить наличие текста для подписки", () ->
                 $(withText(TEXT_SUBSCRIBE)).shouldHave(Condition.exist));
     }
 
@@ -95,14 +96,13 @@ public class PressButtonsOnMainPageTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Test button search clickable")
+    @DisplayName("Test button shop clickable")
     public void clickButtonShop() {
-        ShopPage shopPage = new ShopPage();
 
         step("Открыть страницу", ()
                 -> mainPage.openPage());
 
-        step("Кликнуть на кнопку интернет-магазин", MainPage::clickOnHeaderShop);
+        step("Кликнуть на кнопку интернет-магазин", mainPage::clickOnHeaderShop);
 
         step("Проверить переход на страницу магазина", shopPage::checkTitle);
     }
@@ -123,20 +123,6 @@ public class PressButtonsOnMainPageTest extends BaseTest {
         });
     }
 
-    @Test
-    @Severity(SeverityLevel.NORMAL)
-    @DisplayName("Test check footer is visible")
-    public void checkFooterVisibility() {
-
-        step("Открыть страницу", () -> mainPage.openPage());
-
-        step("Прокрутить до конца страницы", () ->
-                $("footer").scrollTo());
-
-        step("Проверить наличие записи о защите прав", () ->
-                $(withText(LICENSE)).shouldHave(Condition.exist));
-    }
-
     @ValueSource(strings = {"Умная кухня", "Умный дом", "Роботы-пылесосы", "Мультиварки",
             "Мультикухни", "Мультипекари", "Грили", "Экотовары"})
     @ParameterizedTest(name = "\"{0}\"")
@@ -152,6 +138,19 @@ public class PressButtonsOnMainPageTest extends BaseTest {
         step("Проверить видимость элементов в средней секции", () -> {
             $x("//div[contains(text(), '" + tabName + "')]").shouldBe(Condition.visible);
         });
+    }
 
+    @Test
+    @Severity(SeverityLevel.NORMAL)
+    @DisplayName("Test check footer is visible")
+    public void checkFooterVisibility() {
+
+        step("Открыть страницу", () -> mainPage.openPage());
+
+        step("Прокрутить до конца страницы", () ->
+                $("footer").scrollTo());
+
+        step("Проверить наличие записи о защите прав", () ->
+                $(withText(LICENSE)).shouldHave(Condition.exist));
     }
 }

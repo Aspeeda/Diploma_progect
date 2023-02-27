@@ -29,6 +29,7 @@ public class BaseTest {
         Attach.browserConsoleLogs();
         Attach.addVideo();
     }
+
     @AfterEach
     void closeWebDriver() {
         Selenide.closeWindow();

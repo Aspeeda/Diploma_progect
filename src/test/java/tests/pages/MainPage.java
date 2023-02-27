@@ -1,5 +1,6 @@
 package tests.pages;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
@@ -17,11 +18,12 @@ public class MainPage {
             "получай промокоды на скидки в наших интернет-магазинах.";
     public static String LICENSE = "© 2022 REDMOND™";
     private static final String TITLE = "На страже чистоты!";
-    public static String SHOP = ".menu-item";
+
     public static String LIST_ITEM = ".main-page-menu-list-item";
+    private final ElementsCollection menu = $$(".menu-item");
 
     public MainPage openPage() {
-        open("https://redmond.company/");
+        open("/");
         title.shouldHave(text(TITLE));
         return this;
     }
@@ -32,8 +34,8 @@ public class MainPage {
     }
 
     @Step("Click on header shop")
-    public static void clickOnHeaderShop() {
-        $$(SHOP).first().click();
+    public void clickOnHeaderShop() {
+        menu.first().click();
     }
 
     @Step("Fill input")
