@@ -11,10 +11,10 @@ public class WebDriverProvider {
 
     public static void configuration() {
         Configuration.baseUrl = config.getBaseUrl();
-        Configuration.browser = config.getBrowser().toString();
+        Configuration.browser = config.getBrowser();
         Configuration.browserVersion = config.getBrowserVersion();
         Configuration.browserSize = config.getBrowserSize();
-        String remoteUrl = String.valueOf(config.getRemoteURL());
+        String remoteUrl = config.getRemoteURL();
         if (remoteUrl != null) {
             Configuration.remote = remoteUrl;
         }

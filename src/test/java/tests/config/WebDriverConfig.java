@@ -1,17 +1,21 @@
 package tests.config;
-import com.codeborne.selenide.Browser;
+
 import org.aeonbits.owner.Config;
-import java.net.URL;
+
+
+@Config.Sources({
+        "classpath:config/${env}.properties"
+})
 
 public interface WebDriverConfig extends Config {
 
     @Key("baseUrl")
-    @DefaultValue("https://redmond.company")
+    @DefaultValue("https://redmond.company/")
     String getBaseUrl();
 
     @Key("browser")
     @DefaultValue("CHROME")
-    Browser getBrowser();
+    String getBrowser();
 
     @Key("browserVersion")
     @DefaultValue("100.0")
@@ -21,7 +25,6 @@ public interface WebDriverConfig extends Config {
     String getBrowserSize();
 
     @Key("remoteUrl")
-    @DefaultValue("http://localhost:4444/wd/hub")
-    URL getRemoteURL();
+    String getRemoteURL();
 
 }

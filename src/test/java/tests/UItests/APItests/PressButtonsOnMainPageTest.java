@@ -27,6 +27,8 @@ public class PressButtonsOnMainPageTest extends TestBase {
     SearchPage searchPage = new SearchPage();
     SmartKitchenPage smartKitchenPage = new SmartKitchenPage();
 
+    private String TEXT_FOR_SEARCH = "мультиварка";
+
     @Test
     @DisplayName("Test button search clickable")
     public void clickButtonSearch() {
@@ -80,7 +82,7 @@ public class PressButtonsOnMainPageTest extends TestBase {
 
         step("Кликнуть на кнопку поиска в шапке и заполнить поле, нажать Enter", () -> {
             mainPage.clickOnHeaderSearch();
-            mainPage.setText("мультиварка");
+            mainPage.setText(TEXT_FOR_SEARCH);
             mainPage.inputSearch.pressEnter();
         });
 

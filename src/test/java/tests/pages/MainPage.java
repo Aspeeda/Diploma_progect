@@ -23,9 +23,6 @@ public class MainPage {
     public MainPage openPage() {
         open("https://redmond.company/");
         title.shouldHave(text(TITLE));
-        $(".closeButton_e23c");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
         return this;
     }
 
