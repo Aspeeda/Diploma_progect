@@ -1,25 +1,28 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
+
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import tests.config.WebDriverProvider;
+import org.junit.jupiter.api.BeforeEach;
+import tests.drivers.DriverSettings;
 import tests.helpers.Attach;
 
+import static com.codeborne.selenide.Selenide.clearBrowserCookies;
+import static com.codeborne.selenide.Selenide.clearBrowserLocalStorage;
+import static io.qameta.allure.Allure.step;
+
 public class BaseTest {
+
     @BeforeAll
     static void configure() {
-        WebDriverProvider.configuration();
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        DriverSettings.configure();
+    }
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-        Configuration.browserCapabilities = capabilities;
+    @BeforeEach
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
     @AfterEach
@@ -28,11 +31,9 @@ public class BaseTest {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
-    }
-
-    @AfterEach
-    void closeWebDriver() {
-        Selenide.closeWindow();
-        Selenide.closeWebDriver();
+        step("Очищаем cookies", () -> {
+            clearBrowserCookies();
+            clearBrowserLocalStorage();
+        });
     }
 }
