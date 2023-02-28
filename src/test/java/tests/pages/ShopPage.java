@@ -1,7 +1,6 @@
 package tests.pages;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class ShopPage {
@@ -12,10 +11,4 @@ public class ShopPage {
     public void checkTitle() {
         $$(".menu-item").first().shouldHave(text(TITLE));
     }
-
-    public void addItem() {
-//        $$(".outer_link_product").first().click();
-        $(".product-card-add").click();
-    }
-
 }
