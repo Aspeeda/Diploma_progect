@@ -1,5 +1,5 @@
 # Дипломный проект по тестированию сайта Redmond [Redmond](https://redmond.company/)
-a href="https://redmond.company//"><img src="media/logo/main-logo.svg" alt="REDMOND" title="REDMOND"/></a>
+<a href="https://redmond.company//"><img src="media/logo/main-logo.svg" alt="REDMOND" title="REDMOND"/></a>
 
 ## :open_book: Содержание:
 
