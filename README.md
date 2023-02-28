@@ -79,7 +79,7 @@ gradle clean test
 Для запуска сборки необходимо перейти в раздел <code><strong>*Собрать с параметрами*</strong></code> и нажать кнопку <code><strong>*Собрать*</strong></code>.
 
 <p align="center">
-  <img src="media/screen/start_jenkins.png" alt="Jenkins" width="800">
+  <img src="media/screenshots/JenkinsConfig.jpg" alt="Jenkins" width="800">
 </p>
 
 После выполнения сборки, в блоке <code><strong>*История сборок*</strong></code> напротив номера сборки появится
@@ -88,11 +88,11 @@ gradle clean test
 ## <img width="4%" title="Allure Report" src="media/logo/Allure_Report.svg"> Отчет о результатах тестирования в [Allure Report](https://jenkins.autotests.cloud/job/diplom_Darya_Melyanovskaya_16/allure/)
 
 <p align="center">
-  <img src="media/screen/jenkins_overview.png" alt="allure-report" width="900">
+  <img src="media/screenshots/allure.jpg" alt="allure-report" width="900">
 </p>
 
 <p align="center">
-  <img src="media/screen/jenkins_behaviors.png" alt="allure-report_1" width="900">
+  <img src="media/screenshots/allure2.jpg" alt="allure-report_1" width="900">
 </p>
 
 ## <img width="4%" title="Allure TestOPS" src="media/logo/Allure_TO.svg"> Интеграция с [Allure TestOps](https://allure.autotests.cloud/launch/18485)
@@ -119,12 +119,12 @@ gradle clean test
 После завершения сборки специальный бот, созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с отчетом о прогоне тестов.
 
 <p align="center">
-<img title="Telegram Notifications" src="media/screen/notifications.png">
+<img title="Telegram Notifications" src="media/screenshots/TelegramBot.jpg">
 
 ## :movie_camera: Видео с прогоном тестов
 
 В отчетах Allure для каждого теста прикреплен не только скриншот, но и видео прохождения теста
 
 <p align="center">
-  <img title="Video" src="media/video/Lamoda_tests.gif">
+  <img title="Video" src="media/video/video.gif">
 </p>
